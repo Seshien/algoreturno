@@ -2,6 +2,11 @@
 #include "Represantation.h"
 
 //tworzy macierz nieskierowan¹
+AdjacencyMatriceGraph::AdjacencyMatriceGraph()
+{
+
+}
+
 AdjacencyMatriceGraph::AdjacencyMatriceGraph(const std::vector<std::pair<int, int>>& eL, size_t V)
 {
 	matrix.resize(V);
@@ -19,6 +24,7 @@ AdjacencyMatriceGraph::AdjacencyMatriceGraph(const std::vector<std::pair<int, in
 
 AdjacencyMatriceGraph::~AdjacencyMatriceGraph()
 {
+
 }
 
 std::vector<int> AdjacencyMatriceGraph::getVertices()
@@ -60,7 +66,7 @@ void AdjacencyMatriceGraph::show()
 	}
 	std::cout << std::endl;
 }
-
+// tworzy polaczenie skierowane 
 bool AdjacencyMatriceGraph::addConnection(const std::pair<int, int>& c)
 {
 	if (matrix[c.first][c.second] != 0)
@@ -71,7 +77,7 @@ bool AdjacencyMatriceGraph::addConnection(const std::pair<int, int>& c)
 	return true;
 }
 
-
+//dziala na polaczeniu skierowanym
 std::vector<std::pair<int, int>> AdjacencyMatriceGraph::toList()
 {
 	std::vector<std::pair<int, int>> res;
@@ -88,7 +94,10 @@ std::vector<std::pair<int, int>> AdjacencyMatriceGraph::toList()
 
 
 
+AdjacencyListGraph::AdjacencyListGraph()
+{
 
+}
 AdjacencyListGraph::AdjacencyListGraph(const std::vector<std::pair<int, int>>& eL, size_t V)
 {
 	elListo.resize(V);
@@ -101,6 +110,7 @@ AdjacencyListGraph::AdjacencyListGraph(const std::vector<std::pair<int, int>>& e
 
 AdjacencyListGraph::~AdjacencyListGraph()
 {
+
 }
 
 std::vector<int> AdjacencyListGraph::getVertices()

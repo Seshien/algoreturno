@@ -2,6 +2,7 @@
 class AdjacencyMatriceGraph
 {
 public:
+	AdjacencyMatriceGraph();
 	AdjacencyMatriceGraph(const std::vector<std::pair<int, int>> & eL, size_t V);
 	~AdjacencyMatriceGraph();
 
@@ -19,6 +20,7 @@ private:
 class AdjacencyListGraph
 {
 public:
+	AdjacencyListGraph();
 	AdjacencyListGraph(const std::vector<std::pair<int, int>> & eL, size_t V);
 	~AdjacencyListGraph();
 
