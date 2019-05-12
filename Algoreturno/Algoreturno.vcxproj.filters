@@ -24,7 +24,7 @@
     <ClInclude Include="Gen.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="AdjacencyMatriceGraph.h">
+    <ClInclude Include="Represantation.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClCompile Include="Gen.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="AdjacencyMatriceGraph.cpp">
+    <ClCompile Include="Represantation.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>

@@ -41,10 +41,16 @@ bool createN(std::vector<std::pair<int, int>> & relations, int node1, int node2,
 		std::cout << "Nie mozna stworzyc takiej relacji" << std::endl;
 		return 1;
 	}
+	if (multiSearch(relations))
+	{
+		relations.pop_back();
+		std::cout << "Nie mozna stworzyc takiej relacji" << std::endl;
+		return 1;
+	}
 	relations.push_back(std::make_pair(node1, node2));
 	return 0;
 }
-
+// Tworzy skierowany graf
 std::vector<std::pair<int, int>> simplifiedGen(int n,int sat)
 {
 	std::srand(time(NULL));
@@ -53,7 +59,7 @@ std::vector<std::pair<int, int>> simplifiedGen(int n,int sat)
 	while (i < n * (n - 1) / (2 * 100 / sat))
 	{
 		int a = std::rand() % n;
-		int b = (std::rand() % (n - a)) + a;
+		int b = std::rand() % n;
 		if (a != b)
 			if (g.addConnection(std::make_pair(a, b)))
 				i++;
@@ -77,7 +83,8 @@ std::vector<std::pair<int, int>> simplifiedGen(int n,int sat)
 		res[i].second = swapVector[res[i].second];
 
 	}
-
+	if (multiSearch(res))
+		std::cout << "Multigraf" << std::endl;
 	return res;
 }
 
