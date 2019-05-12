@@ -1,20 +1,47 @@
 #pragma once
 #include "pch.h"
 
-bool createR(std::vector<std::pair<int, int>> & relations, size_t nodes, bool cyclesearch = false);
-bool createN(std::vector<std::pair<int, int>> & relations, int node1, int node2, bool cyclesearch = false);
+class GenGraf
+{
 
-//std::vector<std::pair<int, int>> simplifiedGen(int n, int sat);
+public:
+	GenGraf();
 
-bool multiSearch(const std::vector<std::pair<int, int>> & relations);
-
-std::vector<std::pair<int, int>> loadGraf(size_t & number);
-
-
-std::vector<std::pair<int, int>> manualGraf(size_t & number);
+	~GenGraf();
+	bool loadGraf(size_t & number);
 
 
-std::vector<std::pair<int, int>> genGraf(int amount, int nas);
+	bool manualGraf(size_t & number);
 
 
-void showEdges(const std::vector<std::pair<int, int>> & relations);
+	bool genGraf(int amount, int nas);
+
+	bool clearGraf();
+
+	bool ifEmpty();
+
+	bool simplifiedGen(int n, int sat);
+
+	void showEdges();
+
+	std::vector<std::pair<int, int>> retGraf();
+
+private:
+	std::vector<std::pair<int, int>> generated;
+
+	bool createR(size_t nodes);
+	bool createN(int node1, int node2);
+
+	bool multiSearch();
+
+	bool addConnection(std::vector<std::vector<int>> & matrix, const std::pair<int, int>& c);
+
+
+	std::vector<std::pair<int, int>> toList(std::vector<std::vector<int>> & matrix);
+};
+
+
+
+
+
+
