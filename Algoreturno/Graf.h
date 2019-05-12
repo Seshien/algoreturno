@@ -1,22 +1,36 @@
 #pragma once
-class Graf
+class UndirectedGraf
 {
 public:
-	Graf();
+	UndirectedGraf();
 
-	~Graf();
+	UndirectedGraf(const std::vector<std::pair<int, int>>& eL, size_t V);
 
-	void init(const std::vector<std::pair<int, int>> & v);
+	~UndirectedGraf();
+
+	void init(const std::vector<std::pair<int, int>>& eL, size_t V);
 
 	void robercik();		// Krypton
 
-	void flores();			// Polon
+	std::vector<int> flores();			// Polon
+
+	void show();
+
+	bool addConnection(const std::pair<int, int> & c);
+
+	bool removeConnection(const std::pair<int, int> & c);
+
+	int getSize()const;
+
 
 private:
-	std::vector<std::pair<int, int>> _edgeList;
+	std::vector<std::vector<int>> matrix;
 
+	std::vector<int> getVertices();
+	std::vector<int> getNeighbours(int v);
+	int getEven();
 
-
+	int DFSb(int v, int vf, std::vector<int> & D, int & cv);
 
 };
 

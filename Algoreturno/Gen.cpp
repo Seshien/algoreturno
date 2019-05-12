@@ -50,22 +50,22 @@ bool createN(std::vector<std::pair<int, int>> & relations, int node1, int node2,
 	relations.push_back(std::make_pair(node1, node2));
 	return 0;
 }
-// Tworzy skierowany graf
+/* Tworzy skierowany graf
 std::vector<std::pair<int, int>> simplifiedGen(int n,int sat)
 {
 	std::srand(time(NULL));
-	AdjacencyMatriceGraph g({}, n);
+	//AdjacencyMatriceGraph g({}, n);
 	size_t i = 0;
 	while (i < n * (n - 1) / (2 * 100 / sat))
 	{
 		int a = std::rand() % n;
 		int b = std::rand() % n;
 		if (a != b)
-			if (g.addConnection(std::make_pair(a, b)))
+	//		if (g.addConnection(std::make_pair(a, b)))
 				i++;
 	}
 
-	auto res = g.toList();
+//	auto res = g.toList();
 	std::vector<int> swapVector;
 	for (size_t i = 0; i < n; i++)
 	{
@@ -77,16 +77,16 @@ std::vector<std::pair<int, int>> simplifiedGen(int n,int sat)
 		swapVector.push_back(a);
 	}
 
-	for (size_t i = 0; i < res.size(); i++)
+	//for (size_t i = 0; i < res.size(); i++)
 	{
 		res[i].first = swapVector[res[i].first];
 		res[i].second = swapVector[res[i].second];
 
 	}
-	if (multiSearch(res))
+//	if (multiSearch(res))
 		std::cout << "Multigraf" << std::endl;
 	return res;
-}
+}*/
 
 bool multiSearch(const std::vector<std::pair<int, int>> & relations)
 {
