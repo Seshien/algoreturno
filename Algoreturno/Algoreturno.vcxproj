@@ -153,14 +153,12 @@
   <ItemGroup>
     <ClInclude Include="Gen.h" />
     <ClInclude Include="Graf.h" />
-    <ClInclude Include="Represantation.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Algoreturno.cpp" />
     <ClCompile Include="Gen.cpp" />
     <ClCompile Include="Graf.cpp" />
-    <ClCompile Include="Represantation.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
