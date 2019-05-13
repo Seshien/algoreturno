@@ -108,8 +108,8 @@ bool GenGraf::simplifiedGen(int n,int sat)
 		generated[i].second = swapVector[generated[i].second];
 
 	}
-	if (multiSearch())
-		std::cout << "Multigraf" << std::endl;
+	//if (multiSearch())
+	//	std::cout << "Multigraf" << std::endl;
 	return 0;
 }
 
@@ -143,7 +143,6 @@ bool GenGraf::loadGraf(size_t & number)
 	else
 		std::cout << "Dostêp zosta³ uzyskany." << std::endl;
 	int n, v, node1, node2;
-	char choice;
 	bool cycle = true;
 	plik >> n >> v;
 	number = n;
@@ -212,7 +211,7 @@ bool GenGraf::addConnection(std::vector<std::vector<int>> & matrix,const std::pa
 		return false;
 
 	matrix[c.first][c.second] = 1;
-	matrix[c.second][c.first] = 1;
+	matrix[c.second][c.first] = -1;
 	return true;
 }
 

@@ -10,7 +10,7 @@ public:
 
 	void init(const std::vector<std::pair<int, int>>& eL, size_t V);
 
-	void robercik();		// Krypton
+	std::vector<int> roberts();		// Krypton
 
 	std::vector<int> flores();			// Polon
 
@@ -26,6 +26,8 @@ public:
 private:
 	std::vector<std::vector<int>> matrix;
 
+	std::vector<int> _roberts(int wierz, std::vector<int> next, int depth);
+	bool inStack(std::vector<int> S, int temp);
 	std::vector<int> getVertices();
 	std::vector<int> getNeighbours(int v);
 	int getEven();
@@ -47,7 +49,7 @@ public:
 
 	void init(const std::vector<std::pair<int, int>>& eL, size_t V);
 
-	void robercik();		// Krypton
+	std::vector<int> roberts();		// Krypton
 
 	std::vector<int> flores();			// Polon
 
@@ -62,9 +64,11 @@ public:
 
 private:
 	std::vector<std::vector<int>> elListo;
-
+	std::vector<int> _roberts(int wierz, std::vector<int> next,int depth);
+	bool inStack(std::vector<int> S, int temp);
 	std::vector<int> getVertices();
 	std::vector<int> getNeighbours(int v);
 	int getEven();
+
 
 };

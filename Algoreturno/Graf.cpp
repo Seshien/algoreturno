@@ -56,7 +56,66 @@ std::vector<int> UndirectedGraf::flores()
 	}
 	
 }
+std::vector<int> UndirectedGraf::roberts()
+{
+	std::vector<int> next;
+	int temp = 0;
+	for (auto x : matrix)
+	{
+		temp = 0;
+		for (auto y : x)
+			temp += y;
 
+		if (temp < 2)
+		{
+			std::cout << "Cykl Hamiltona nie moze istniec." << std::endl;
+			return next;
+		}
+	}
+	auto res = _roberts(0, next, 0);
+	if (res.empty())
+	{
+		std::cout << "Nie znaleziono cyklu Hamiltona" << std::endl;
+		return res;
+	}
+	return res;
+}
+std::vector<int> UndirectedGraf::_roberts(int wierz, std::vector<int> next, int depth)
+{
+	depth++;
+	//std::cout << "Depth: " << depth << std::endl;
+	auto graph = *this;
+	std::vector<int> res;
+	std::vector<int> temp = graph.getNeighbours(wierz);
+	next.push_back(wierz);
+	if (matrix.size() == next.size())
+	{
+		if (inStack(temp, 0))
+		{
+			next.push_back(0);
+			return next;
+		}
+	}
+	
+	for (int i = 0; i < temp.size(); i++)
+	{
+		if (!(inStack(next, temp[i])))
+			res = _roberts(temp[i], next, depth);
+		if (!(res.empty()))
+			return res;
+	}
+	temp.clear();
+	return temp;
+}
+bool UndirectedGraf::inStack(std::vector<int> S, int temp)
+{
+	for (int i = 0; i < S.size(); i++)
+	{
+		if (S[i] == temp)
+			return 1;
+	}
+	return 0;
+}
 void UndirectedGraf::show()
 {
 	std::cout << "Graf jako macierz sasiedztwa: " << std::endl;
@@ -219,6 +278,59 @@ std::vector<int> DirectedGraf::flores()
 	}
 }
 
+std::vector<int> DirectedGraf::roberts()
+{
+	auto graph = *this;
+	std::vector<int> next;
+	for(auto x:elListo)
+	{
+		if (x.size() < 1)
+		{
+			std::cout << "Cykl Hamiltona nie moze istniec." << std::endl;
+			return next;
+		}
+	}
+	auto res = _roberts(0,next,0);
+	if (res.empty())
+	{
+		std::cout << "Nie znaleziono cyklu Hamiltona" << std::endl;
+		return res;
+	}
+	return res;
+}
+std::vector<int> DirectedGraf::_roberts(int wierz,std::vector<int> next, int depth)
+{
+	depth++;
+	//std::cout << "Depth: " << depth << std::endl;
+	std::vector<int> res;
+	std::vector<int> empty;
+	next.push_back(wierz);
+	if (elListo.size() == next.size())
+	{
+		if (inStack(elListo[wierz], 0))
+		{
+			next.push_back(0);
+			return next;
+		}
+	}
+	for (int i = 0; i < elListo[wierz].size(); i++)
+	{
+		if (!(inStack(next, elListo[wierz][i])))
+			res=_roberts(elListo[wierz][i], next,depth);
+		if (!(res.empty()))
+			return res;
+	}
+	return empty;
+}
+bool DirectedGraf::inStack(std::vector<int> S, int temp)
+{
+	for (int i = 0; i < S.size(); i++)
+	{
+		if (S[i] == temp)
+			return 1;
+	}
+	return 0;
+}
 void DirectedGraf::show()
 {
 	std::cout << "Graf jak list sasiedztwa:" << std::endl;
@@ -289,3 +401,57 @@ int DirectedGraf::getEven()
 	return -1;
 }
 
+/*
+std::vector<int> DirectedGraf::roberts()
+{
+	auto res = elListo;
+	auto S = std::vector<int>();
+	auto it = res[0].begin();
+	int i = 0, temp;
+	bool empty = 0;
+	while (S.size() != res.size())
+	{
+		empty = 0;
+		it = res[i].begin();
+		while (!(empty))
+		{
+			if (it == res[i].end())
+			{
+				empty = 1;
+				break;
+			}
+			if (inStack(S, *it))
+			{
+				break;
+			}
+
+			it++;
+
+		}
+		if (empty)
+		{
+			if (S.empty())
+				return std::vector<int>();
+			S.pop_back();
+			if (S.empty())
+				i = 0;
+			else
+				i = S.back();
+			continue;
+		}
+		else
+		{
+			S.push_back(*it);
+			i = S.back();
+		}
+		if (S.size() == res.size())
+		{
+			if (S[i] == 0)
+				return S;
+			else
+				S.pop_back();
+		}
+	}
+	return S;
+}
+*/
