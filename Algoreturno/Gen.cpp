@@ -80,8 +80,8 @@ bool GenGraf::simplifiedGen(int n,int sat)
 	{
 		x.resize(n);
 	}
-	size_t i = 0;
-	while (i < n * (n - 1) / (2 * 100 / sat))
+	size_t i = 0, amount= (n * (n-1)) / (2 * 100.0 / sat);
+	while (i < amount)
 	{
 		int a = std::rand() % n;
 		int b = std::rand() % n;
