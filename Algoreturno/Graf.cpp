@@ -395,7 +395,7 @@ int DirectedGraf::getEven()
 {
 	for (size_t i = 0; i < elListo.size(); i++)
 	{
-		if (elListo[i].size() != 0 && elListo[i].size() % 2 == 0)
+		if (elListo[i].size() != 0)
 			return i;
 	};
 	return -1;
