@@ -33,26 +33,43 @@ void UndirectedGraf::init(const std::vector<std::pair<int, int>>& eL, size_t V)
 
 std::vector<int> UndirectedGraf::flores()
 {
+	auto res = std::vector<int>();
+	auto S = std::stack<int>();
 	auto G_prim = *this;
-	std::vector<int> D;
-	D.resize(G_prim.getSize());
-	std::vector<int> S;
+
+	for (size_t i = 0; i < matrix.size(); i++)
+	{
+		if (this->getNeighbours(i).size()% 2 == 1)
+		{
+			std::cout << "Brak cyklu Eulera"<<std::endl;
+			return std::vector<int>();
+		}
+	}
+
+
+	int am = 0;
 	auto v = G_prim.getEven();
+	res.push_back(v);
 	while (true)
 	{
-		S.push_back(v);
-		auto n = G_prim.getNeighbours(v);
-		if (n.size() == 0)
-			return S;
-		auto u = n[0];
-		std::fill(D.begin(), D.end(), 0);
-		auto cv = 1;
-		G_prim.DFSb(v, -1, D, cv);
-		int i = 0;
-		while (i < n.size() && matrix[v][u] == 2)
-			u = n[i++];
-		G_prim.removeConnection({ v, u });
-		v = u;
+		while (G_prim.getNeighbours(v).size() != 0)
+		{
+			auto w = G_prim.getNeighbours(v)[0];
+			S.push(v);
+			G_prim.removeConnection({ v,w });
+			v = w;
+		}
+		if (S.size() != 0)
+		{
+			v = S.top();
+			S.pop();
+			res.push_back(v);
+		}
+		else
+		{
+			std::reverse(res.begin(), res.end());
+			return res;
+		}
 	}
 	
 }
@@ -252,7 +269,25 @@ std::vector<int> DirectedGraf::flores()
 	auto res = std::vector<int>();
 	auto S = std::stack<int>();
 	auto G_prim = *this;
-	
+
+	for (size_t i = 0; i < elListo.size(); i++)
+	{
+		int sum = 0;
+		for (size_t j = 0; j < elListo.size(); j++)
+		{
+			if (std::find(elListo[j].begin(), elListo[j].end(), i) != elListo[j].end())
+				sum++;
+		}
+		if (sum != elListo[i].size())
+		{
+			std::cout << "Brak cyklu Eulera" << std::endl;
+			return std::vector<int>();
+		}
+	}
+
+
+
+	int am = 0;
 	auto v = G_prim.getEven();
 	res.push_back(v);
 	while(true)
