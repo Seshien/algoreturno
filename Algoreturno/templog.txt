@@ -1,0 +1,13 @@
+Undirected_roberts.txt
+5:80:1.618e-05:1.0471e-05
+5:90:1.428e-05:9.66476e-06
+Directed_roberts.txt
+Undirected_flores.txt
+Directed_flores.txt
+Undirected_roberts.txt
+6:70:1.57867e-05:9.18926e-06
+6:80:1.4375e-05:8.33126e-06
+6:90:1.3696e-05:7.58759e-06
+Directed_roberts.txt
+6:80:1.25233e-05:7.4089e-06
+6:90:1.262e-05:7.84448e-06
