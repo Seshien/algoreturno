@@ -41,7 +41,7 @@ std::vector<int> UndirectedGraf::flores()
 	{
 		if (this->getNeighbours(i).size()% 2 == 1)
 		{
-			std::cout << "Brak cyklu Eulera"<<std::endl;
+			//std::cout << "Brak cyklu Eulera"<<std::endl;
 			return std::vector<int>();
 		}
 	}
@@ -85,14 +85,14 @@ std::vector<int> UndirectedGraf::roberts()
 
 		if (temp < 2)
 		{
-			std::cout << "Cykl Hamiltona nie moze istniec." << std::endl;
+			//std::cout << "Cykl Hamiltona nie moze istniec." << std::endl;
 			return next;
 		}
 	}
 	auto res = _roberts(0, next, 0);
 	if (res.empty())
 	{
-		std::cout << "Nie znaleziono cyklu Hamiltona" << std::endl;
+		//std::cout << "Nie znaleziono cyklu Hamiltona" << std::endl;
 		return res;
 	}
 	return res;
@@ -280,7 +280,7 @@ std::vector<int> DirectedGraf::flores()
 		}
 		if (sum != elListo[i].size())
 		{
-			std::cout << "Brak cyklu Eulera" << std::endl;
+			//std::cout << "Brak cyklu Eulera" << std::endl;
 			return std::vector<int>();
 		}
 	}
@@ -321,14 +321,14 @@ std::vector<int> DirectedGraf::roberts()
 	{
 		if (x.size() < 1)
 		{
-			std::cout << "Cykl Hamiltona nie moze istniec." << std::endl;
+			//std::cout << "Cykl Hamiltona nie moze istniec." << std::endl;
 			return next;
 		}
 	}
 	auto res = _roberts(0,next,0);
 	if (res.empty())
 	{
-		std::cout << "Nie znaleziono cyklu Hamiltona" << std::endl;
+		//std::cout << "Nie znaleziono cyklu Hamiltona" << std::endl;
 		return res;
 	}
 	return res;
@@ -336,7 +336,7 @@ std::vector<int> DirectedGraf::roberts()
 std::vector<int> DirectedGraf::_roberts(int wierz,std::vector<int> next, int depth)
 {
 	depth++;
-	//std::cout << "Depth: " << depth << std::endl;
+	//std::cout << "Depth: " << depth <<" Wierz: "<< wierz << std::endl;
 	std::vector<int> res;
 	std::vector<int> empty;
 	next.push_back(wierz);
