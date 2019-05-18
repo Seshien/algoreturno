@@ -81,7 +81,7 @@ bool GenGraf::simplifiedGen(int n,int sat)
 		x.resize(n);
 	}
 	size_t i = 0, amount= (n * (n-1)) / (2 * 100.0 / sat);
-	//std::cout << "Ilosc krawedzi: " << amount << std::endl;
+	//std::cout << "Ilosc krawedzi: " << amount << " Stosunek krawedzi do wierz: " << amount * 1.0 / n << std::endl;
 	while (i < amount)
 	{
 		int a = std::rand() % n;
