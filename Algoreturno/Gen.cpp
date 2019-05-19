@@ -73,7 +73,7 @@ bool GenGraf::createN(int node1, int node2)
  //Tworzy skierowany graf
 bool GenGraf::simplifiedGen(int n,int sat)
 {
-	std::srand(time(NULL));
+	clearGraf();
 	std::vector<std::vector<int>> matrix;
 	matrix.resize(n);
 	for (auto &x : matrix)
@@ -91,7 +91,8 @@ bool GenGraf::simplifiedGen(int n,int sat)
 				i++;
 	}
 
-	generated = toList(matrix);
+	this->generated = toList(matrix);
+	/*
 	std::vector<int> swapVector;
 	for (size_t i = 0; i < n; i++)
 	{
@@ -109,6 +110,7 @@ bool GenGraf::simplifiedGen(int n,int sat)
 		generated[i].second = swapVector[generated[i].second];
 
 	}
+	*/
 	//if (multiSearch())
 	//	std::cout << "Multigraf" << std::endl;
 	return 0;
@@ -179,7 +181,6 @@ bool GenGraf::manualGraf(size_t & number)
 bool GenGraf::genGraf(int amount, int sat)
 {
 	clearGraf();
-	std::srand(time(NULL));
 	int sizeR = amount * (amount - 1) / (2 * 100 / sat);
 	size_t amountt = amount;
 	int i = 0;
